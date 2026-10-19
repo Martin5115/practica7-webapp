@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    container_name: webapp-practica7
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_NAME: practica7
+      DB_USER: usuario
+      DB_PASS: secreto123
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-practica7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootsecreto
+      MYSQL_DATABASE: practica7
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: secreto123
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootsecreto"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  db_data:
