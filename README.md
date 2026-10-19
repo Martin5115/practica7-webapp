@@ -2,6 +2,9 @@
 
 Aplicación web "Hola Mundo" en PHP que se conecta a una base de datos MySQL.
 
+<img width="404" height="214" alt="image" src="https://github.com/user-attachments/assets/b32c6435-4e9f-4758-950c-4daa02d6312c" />
+
+
 ## Servicios
 - **app**: PHP 8.3 + Apache (construido con `Dockerfile`)
 - **db**: MySQL 8.0
